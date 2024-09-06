@@ -1,0 +1,22 @@
+services:
+
+  service_a:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: service_a
+    volumes:
+      - ./downloaded:/app/downloaded
+    networks:
+      app-network:
+    ports:
+      - "17500:5555"
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1.5G
+
+networks:
+  app-network:
+    driver: bridge
