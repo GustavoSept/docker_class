@@ -6,7 +6,7 @@ def get_app():
     
     @flask_app.get("/")
     def home():
-        return "Hello world!"
+        return "Service AAAAA container"
     
     @flask_app.get("/secret_message/<int:id>")
     def secret_message(id):
@@ -34,5 +34,5 @@ if __name__ == '__main__':
     flask_app.run(
         debug=True,
         host='0.0.0.0',
-        port=5555,
+        port=4444,
     )

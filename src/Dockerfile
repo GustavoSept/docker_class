@@ -27,6 +27,7 @@ RUN pip3 install --no-cache-dir --default-timeout=180 -r /tmp/requirements.txt \
 
 # Copy the rest of the application code
 COPY container_a /app/container_a
+COPY container_b /app/container_b
 
 
 CMD ["python3", "container_a/app.py"]

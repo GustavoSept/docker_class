@@ -5,18 +5,33 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: service_a
-    volumes:
-      - ./downloaded:/app/downloaded
     networks:
-      app-network:
+      our-network:
     ports:
-      - "17500:5555"
+      - "17500:4444"
     deploy:
       resources:
         limits:
           cpus: '2.0'
           memory: 1.5G
+    command: ["python3", "/app/container_a/app.py"]  # Override CMD for service_a
+
+  service_b:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: service_b
+    networks:
+      our-network:
+    ports:
+      - "18500:8888"
+    deploy:
+      resources:
+        limits:
+          cpus: '2.0'
+          memory: 1.5G
+    command: ["python3", "/app/container_b/app.py"]  # Override CMD for service_b
 
 networks:
-  app-network:
+  our-network:
     driver: bridge
